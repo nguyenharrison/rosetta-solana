@@ -1,0 +1,1 @@
+stores all the checks and things we need to do at app startup to keep app.ts clean and simple
