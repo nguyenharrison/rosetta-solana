@@ -1,11 +1,35 @@
-import express = require("express");
+import 'reflect-metadata'; // We need this in order to use @Decorators
 
-const app: express.Application = express();
+import config from './config';
 
-app.get("/", function (req, res) {
-    res.send("Hello World!");
-});
+import express from 'express';
 
-app.listen(3000, function () {
-console.log("App is listening on port 3000!");
-});
+import Logger from './loaders/logger';
+
+async function startServer() {
+  const app = express();
+
+  /**
+   * A little hack here
+   * Import/Export can only be used in 'top-level code'
+   * Well, at least in node 10 without babel and at the time of writing
+   * So we are using good old require.
+   **/
+  await require('./loaders').default({ expressApp: app });
+
+  app.listen(config.port, () => {
+      console.log("hello")
+    Logger.info(`
+      ################################################
+      🛡️  Server listening on port: ${config.port} 🛡️
+      ################################################
+    `);
+  }).on('error', err => {
+      console.log(err)
+    /*Logger.error(err);*/
+    process.exit(1);
+  });
+
+}
+
+startServer();
