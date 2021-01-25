@@ -1,10 +1,10 @@
 
-export interface NetworkIdentifier{
+export type NetworkIdentifier = {
   blockchain: string;
   network: string;
   sub_network_identifier: SubNetworkIdentifier;
 }
 
 // no shards baby
-export interface SubNetworkIdentifier {
+export type SubNetworkIdentifier = {
 }
