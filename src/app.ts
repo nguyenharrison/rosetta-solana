@@ -4,7 +4,7 @@ import config from './config';
 
 import express from 'express';
 
-import Logger from './loaders/logger';
+import Logger from './loaders/Logger';
 
 async function startServer() {
   const app = express();
@@ -18,7 +18,6 @@ async function startServer() {
   await require('./loaders').default({ expressApp: app });
 
   app.listen(config.port, () => {
-      console.log("hello")
     Logger.info(`
       ################################################
       🛡️  Server listening on port: ${config.port} 🛡️

@@ -1,9 +1,9 @@
 import { Router, Request, Response } from 'express';
-import network from './routes/network';
+import NetworkController from './routes/NetworkController';
 // guaranteed to get dependencies
 export default () => {
 	const app = Router();
-	network(app);
+	NetworkController(app);
 	
 	return app
 }

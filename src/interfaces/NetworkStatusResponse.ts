@@ -1,7 +1,7 @@
 import { Block } from "typescript";
 import { BlockIdentifier } from "./BlockIdentifier";
 
-export interface NetworkStatusResponse{
+export type NetworkStatusResponse = {
   current_block_identifier: BlockIdentifier;
   current_block_timestamp: number;
   genesis_block_identifier: BlockIdentifier;
@@ -10,7 +10,7 @@ export interface NetworkStatusResponse{
   peers: [Peer];
 }
 
-interface SyncStatus {
+export type SyncStatus = {
   current_index: number;
   target_index: number;
   stage: string, 
@@ -18,6 +18,6 @@ interface SyncStatus {
 }
 
 //TO-DO
-interface Peer {
+export type Peer = {
   peer_id: string
 }
